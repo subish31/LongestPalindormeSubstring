@@ -30,7 +30,15 @@ tog1.addEventListener("click",function(){
 
 var namePattern=/^[a-zA-Z ]+$/;
 
-var flag=true;
+var fnameflag=true;
+var lnameflag=true;
+var emailflag=true;
+var pwdflag=true;
+var cpwdflag=true;
+var hobflag=true;
+var fileflag=true;
+var ageflag=true;
+var bioflag=true;
 
 
 
@@ -47,16 +55,16 @@ fn.addEventListener("input",function(){
     let value=fn.value;
     if(value===""){
         war.textContent="Name should not be Empty !!"
-        flag=false;
+        fnameflag=false;
     }
     else if(!namePattern.test(value)){
         war.textContent="Name should Contain alphabets only !!";
-        flag=false;
+        fnameflag=false;
         
     }
     else{
         war.textContent="";
-        flag=true;
+        fnameflag=true;
 
     }
 })
@@ -76,16 +84,16 @@ ln.addEventListener("input",function(){
     let value=ln.value;
     if(value===""){
         warLn.textContent="Name should not be Empty !!";
-        flag=false;
+        lnameflag=false;
     }
     else if(!namePattern.test(value)){
         warLn.textContent="Name should Contain alphabets only !!";
-        flag=false;
+        lnameflag=false;
         
     }
     else{
         warLn.textContent="";
-        flag=true;
+        lnameflag=true;
     }
 })
 
@@ -104,16 +112,16 @@ em.addEventListener("input",function(){
     let value=em.value;
     if(value === ""){
         warEm.textContent="Email should not be Empty !!";
-        flag=false;
+        emailflag=false;
     }
     else if(!emailPattern .test(value)){
         warEm.textContent="Invalid Email Format !!";
-        flag=false;
+        emailflag=false;
         
     }
     else{
         warEm.textContent="";
-        flag=true;
+        emailflag=true;
     }
 });
 
@@ -133,12 +141,12 @@ pa.addEventListener("input",function(){
     let value=pa.value;
     if(value === ""){
         warPa.textContent="Password not be Empty !!";
-        flag=false;
+        pwdflag=false;
     }
     else if(!pwdPattern .test(value)){
         warPa.textContent = "Password should contain ,\n• min 8 characters\n• an uppercase letter\n• a lowercase letter\n• a digit\n• a symbol";
         warPa.style.whiteSpace = "pre-line"; 
-        flag=false;
+        pwdflag=false;
     }
     else if(!(value === "") && (pwdPattern .test(value))){
         passver=value;
@@ -146,7 +154,7 @@ pa.addEventListener("input",function(){
     }
     else{
         warPa.textContent="";
-        flag=true;
+        pwdflag=true;
     }
 });
 
@@ -165,20 +173,20 @@ cpa.addEventListener("input",function(){
     let value=cpa.value;
     if(value === ""){
         warCpa.textContent="Password not be Empty !!";
-        flag=false;
+        cpwdflag=false;
     }
     else if(!pwdPattern .test(value)){
         warCpa.textContent = "Password should contain ,\n• min 8 characters\n• an uppercase letter\n• a lowercase letter\n• a digit\n• a symbol";
         warCpa.style.whiteSpace = "pre-line"; 
-        flag=false;
+        cpwdflag=false;
     }
     else if(passver!==value){
         warCpa.textContent="Password not Matching!!";
-        flag=false;
+        cpwdflag=false;
     }
     else{
         warCpa.textContent="";
-        flag=true;
+        cpwdflag=true;
     }
 });
 
@@ -200,11 +208,11 @@ for (let a of ho) {
 
         if (count < 2) {
             hob.textContent = "Please select at least 2!";
-            flag=false;
+            hobflag=false;
         } 
         else {
             hob.textContent = "";
-            flag=true;
+            hobflag=true;
         }
     });
 }
@@ -224,17 +232,17 @@ var maxSize=2*1024*1024;
 fi.addEventListener("input",function(){
     if(!types.includes(fi.files[0].type)){
         fil.textContent = "Only pdf file is supported";
-        flag=false;
+        fileflag=false;
         fi.value="";
     }
     else if(fi.files[0].size>maxSize){
         fil.textContent = "Maximum size of file is 2MB";
-        flag=false;
+        fileflag=false;
         fi.value="";
     }
     else{
         fil.textContent = "";
-        flag=true;
+        fileflag=true;
     }
 });
 
@@ -252,15 +260,15 @@ ag.addEventListener("input",function(){
     let value=ag.value;
     if(value===""){
         age.textContent = "Please select the age";
-        flag=false;
+        ageflag=false;
     }
     else if(value<18){
         age.textContent = "Age should not be less than 18";
-        flag=false;
+        ageflag=false;
     }
     else{
         age.textContent = "";
-        flag=true;
+        ageflag=true;
     }
 });
 
@@ -279,11 +287,11 @@ bi.addEventListener("input",function(){
     let value=bi.value;
     if(value==="" || value===" "){
         bio.textContent = "bio can't be empty";
-        flag=false;
+        bioflag=false;
     }
     else{
         bio.textContent = "";
-        flag=true;
+        bioflag=true;
     }
 });
 
@@ -302,11 +310,24 @@ for(var a of gen){
     })
 }
 
+
+
+// var fnameflag=true;
+// var lnameflag=true;
+// var emailflag=true;
+// var pwdflag=true;
+// var cpwdflag=true;
+// var hobflag=true;
+// var genflag=true;
+// var fileflag=true;
+// var ageflag=true;
+// var bioflag=true;
+
 function validate(){
     if(fn.value==="" || ln.value==="" ||em.value==="" ||pa.value==="" ||cpa.value==="" ||fi.files.length===0 || ag.value==="" || bi.value==="" || !genRes ||count<2 ){
         alert("Please fill all the details");
     }
-    else if(!flag){
+    else if(!fnameflag || !lnameflag ||!emailflag || !pwdflag || !cpwdflag || !hobflag || !fileflag || !ageflag || !bioflag ){
         alert("Please complete the form according to the input conditions");
     }
     else{
